@@ -1,0 +1,658 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "MiGAP", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "content_id": null, 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset"
+                }
+            ], 
+            "label": null, 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 200, 
+                "top": 213.41668701171875
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "uuid": "16f4b954-ce0b-4db1-bb3b-93c0e2ed0c06", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output", 
+                    "uuid": "35c89c92-9fdd-4608-9951-fc30dc9fb8f7"
+                }
+            ]
+        }, 
+        "1": {
+            "annotation": "", 
+            "content_id": "migap_1", 
+            "id": 1, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool MetaGeneAnotator", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "MetaGeneAnotator", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 428, 
+                "top": 213.41668701171875
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "migap_1", 
+            "tool_state": "{\"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"option\": \"\\\"-s\\\"\", \"__page__\": 0}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "uuid": "efbd7c27-fbc4-4901-b91d-0365d0dad8f1", 
+            "workflow_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "content_id": "migap_2", 
+            "id": 2, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool tRNAscan-SE 1.23", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "tRNAscan-SE 1.23", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 428, 
+                "top": 326.41668701171875
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "migap_2", 
+            "tool_state": "{\"__page__\": 0, \"optModel\": \"\\\"-B\\\"\", \"optH\": \"\\\"false\\\"\", \"__rerun_remap_job_id__\": null, \"optC\": \"\\\"false\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "uuid": "4d96092e-ebc8-401a-a7a2-c14dd8a6488a", 
+            "workflow_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "content_id": "migap_3", 
+            "id": 3, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool RNAmmer 1.2", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "RNAmmer 1.2", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "gff"
+                }
+            ], 
+            "position": {
+                "left": 428, 
+                "top": 439.41668701171875
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "migap_3", 
+            "tool_state": "{\"optM\": \"[\\\"lsu\\\", \\\"ssu\\\", \\\"tsu\\\"]\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"optS\": \"\\\"bac\\\"\", \"__page__\": 0}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "uuid": "eb710099-808d-4d0e-86f0-321d9833b3cc", 
+            "workflow_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "content_id": "migap_4", 
+            "id": 4, 
+            "input_connections": {
+                "input": {
+                    "id": 0, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool 16S rRNA Search", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "16S rRNA Search", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 428, 
+                "top": 552.4166870117188
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "migap_4", 
+            "tool_state": "{\"__page__\": 0, \"evalue\": \"\\\"1e-20\\\"\", \"numdesc\": \"\\\"1\\\"\", \"numali\": \"\\\"1\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "uuid": "d34cbfba-80cf-4daa-bf5a-972b36fb5a74", 
+            "workflow_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "content_id": "migap_5", 
+            "id": 5, 
+            "input_connections": {
+                "input1": {
+                    "id": 0, 
+                    "output_name": "output"
+                }, 
+                "input2": {
+                    "id": 1, 
+                    "output_name": "output"
+                }, 
+                "input3": {
+                    "id": 2, 
+                    "output_name": "output"
+                }, 
+                "input4": {
+                    "id": 3, 
+                    "output_name": "output"
+                }, 
+                "input5": {
+                    "id": 4, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Report(interim)", 
+                    "name": "input2"
+                }, 
+                {
+                    "description": "runtime parameter for tool Report(interim)", 
+                    "name": "input3"
+                }, 
+                {
+                    "description": "runtime parameter for tool Report(interim)", 
+                    "name": "input1"
+                }, 
+                {
+                    "description": "runtime parameter for tool Report(interim)", 
+                    "name": "input4"
+                }, 
+                {
+                    "description": "runtime parameter for tool Report(interim)", 
+                    "name": "input5"
+                }
+            ], 
+            "label": null, 
+            "name": "Report(interim)", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "output2", 
+                    "type": "fasta"
+                }, 
+                {
+                    "name": "output3", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "output4", 
+                    "type": "csv"
+                }, 
+                {
+                    "name": "output5", 
+                    "type": "embl"
+                }, 
+                {
+                    "name": "output6", 
+                    "type": "genbank"
+                }, 
+                {
+                    "name": "output7", 
+                    "type": "genbank"
+                }
+            ], 
+            "position": {
+                "left": 670.0000152587891, 
+                "top": 213.41668701171875
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput1": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output1"
+                }, 
+                "HideDatasetActionoutput3": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output3"
+                }, 
+                "HideDatasetActionoutput4": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output4"
+                }, 
+                "HideDatasetActionoutput5": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output5"
+                }, 
+                "HideDatasetActionoutput6": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output6"
+                }, 
+                "HideDatasetActionoutput7": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output7"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "migap_5", 
+            "tool_state": "{\"input2\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input3\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input4\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"input5\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\"}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "uuid": "c8f7887a-931d-4e2d-b118-2d1ff7d98384", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output2", 
+                    "uuid": "9cccbae4-e4d8-4c74-ab8c-0d00d0040271"
+                }
+            ]
+        }, 
+        "6": {
+            "annotation": "", 
+            "content_id": "migap_6", 
+            "id": 6, 
+            "input_connections": {
+                "input": {
+                    "id": 5, 
+                    "output_name": "output2"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool COG Search", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "COG Search", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 916.0000152587891, 
+                "top": 213.41668701171875
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "migap_6", 
+            "tool_state": "{\"__page__\": 0, \"passwd\": \"\\\"w3migap\\\"\", \"evalue\": \"\\\"100.0\\\"\", \"numdesc\": \"\\\"1\\\"\", \"numali\": \"\\\"1\\\"\", \"user\": \"\\\"w3migap\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "uuid": "fd22780b-a321-480e-948a-004ebf6a2ab2", 
+            "workflow_outputs": []
+        }, 
+        "7": {
+            "annotation": "", 
+            "content_id": "migap_7", 
+            "id": 7, 
+            "input_connections": {
+                "input": {
+                    "id": 5, 
+                    "output_name": "output2"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool RefSeq Search", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "RefSeq Search", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 916.0000152587891, 
+                "top": 326.41668701171875
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "migap_7", 
+            "tool_state": "{\"__page__\": 0, \"passwd\": \"\\\"w3migap\\\"\", \"evalue\": \"\\\"100.0\\\"\", \"numdesc\": \"\\\"1\\\"\", \"numali\": \"\\\"1\\\"\", \"user\": \"\\\"w3migap\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "uuid": "1fd07985-7187-4247-97d7-7987a6ba7844", 
+            "workflow_outputs": []
+        }, 
+        "8": {
+            "annotation": "", 
+            "content_id": "migap_8", 
+            "id": 8, 
+            "input_connections": {
+                "input1": {
+                    "id": 5, 
+                    "output_name": "output2"
+                }, 
+                "input2": {
+                    "id": 6, 
+                    "output_name": "output"
+                }, 
+                "input3": {
+                    "id": 7, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Unannotated", 
+                    "name": "input2"
+                }, 
+                {
+                    "description": "runtime parameter for tool Unannotated", 
+                    "name": "input3"
+                }, 
+                {
+                    "description": "runtime parameter for tool Unannotated", 
+                    "name": "input1"
+                }
+            ], 
+            "label": null, 
+            "name": "Unannotated", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "fasta"
+                }
+            ], 
+            "position": {
+                "left": 1144.000015258789, 
+                "top": 213.41668701171875
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "migap_8", 
+            "tool_state": "{\"input2\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input3\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null, \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": 0}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "uuid": "0172af1c-f31f-43c5-b11f-17dbc9407d0d", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output1", 
+                    "uuid": "5e98f1c0-b88c-4abd-b215-11a83bb26118"
+                }
+            ]
+        }, 
+        "9": {
+            "annotation": "", 
+            "content_id": "migap_9", 
+            "id": 9, 
+            "input_connections": {
+                "input": {
+                    "id": 8, 
+                    "output_name": "output1"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool TrEMBL Search", 
+                    "name": "input"
+                }
+            ], 
+            "label": null, 
+            "name": "TrEMBL Search", 
+            "outputs": [
+                {
+                    "name": "output", 
+                    "type": "tabular"
+                }
+            ], 
+            "position": {
+                "left": 1371.9999542236328, 
+                "top": 213.41668701171875
+            }, 
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {}, 
+                    "action_type": "HideDatasetAction", 
+                    "output_name": "output"
+                }
+            }, 
+            "tool_errors": null, 
+            "tool_id": "migap_9", 
+            "tool_state": "{\"__page__\": 0, \"passwd\": \"\\\"w3migap\\\"\", \"evalue\": \"\\\"100.0\\\"\", \"numdesc\": \"\\\"1\\\"\", \"numali\": \"\\\"1\\\"\", \"user\": \"\\\"w3migap\\\"\", \"input\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "uuid": "8eda009e-2da7-4512-b277-96b982ef43bc", 
+            "workflow_outputs": []
+        }, 
+        "10": {
+            "annotation": "", 
+            "content_id": "migap_10", 
+            "id": 10, 
+            "input_connections": {
+                "input1": {
+                    "id": 6, 
+                    "output_name": "output"
+                }, 
+                "input2": {
+                    "id": 9, 
+                    "output_name": "output"
+                }, 
+                "input3": {
+                    "id": 7, 
+                    "output_name": "output"
+                }, 
+                "input4": {
+                    "id": 5, 
+                    "output_name": "output6"
+                }, 
+                "input5": {
+                    "id": 5, 
+                    "output_name": "output5"
+                }, 
+                "input6": {
+                    "id": 5, 
+                    "output_name": "output3"
+                }, 
+                "input7": {
+                    "id": 5, 
+                    "output_name": "output4"
+                }
+            }, 
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Merge(final)", 
+                    "name": "input2"
+                }, 
+                {
+                    "description": "runtime parameter for tool Merge(final)", 
+                    "name": "input3"
+                }, 
+                {
+                    "description": "runtime parameter for tool Merge(final)", 
+                    "name": "input1"
+                }, 
+                {
+                    "description": "runtime parameter for tool Merge(final)", 
+                    "name": "input6"
+                }, 
+                {
+                    "description": "runtime parameter for tool Merge(final)", 
+                    "name": "input7"
+                }, 
+                {
+                    "description": "runtime parameter for tool Merge(final)", 
+                    "name": "input4"
+                }, 
+                {
+                    "description": "runtime parameter for tool Merge(final)", 
+                    "name": "input5"
+                }
+            ], 
+            "label": null, 
+            "name": "Merge(final)", 
+            "outputs": [
+                {
+                    "name": "output1", 
+                    "type": "genbank"
+                }, 
+                {
+                    "name": "output2", 
+                    "type": "embl"
+                }, 
+                {
+                    "name": "output3", 
+                    "type": "tabular"
+                }, 
+                {
+                    "name": "output4", 
+                    "type": "csv"
+                }, 
+                {
+                    "name": "output5", 
+                    "type": "genbank"
+                }
+            ], 
+            "position": {
+                "left": 1599.9999542236328, 
+                "top": 213.41668701171875
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "migap_10", 
+            "tool_state": "{\"input2\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input3\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input1\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input6\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input7\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input4\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"input5\": \"{\\\"__class__\\\": \\\"RuntimeValue\\\"}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}", 
+            "tool_version": "0.1.0", 
+            "type": "tool", 
+            "uuid": "a088aff7-ad12-495b-98eb-2ec707624921", 
+            "workflow_outputs": [
+                {
+                    "label": null, 
+                    "output_name": "output2", 
+                    "uuid": "4119cb71-a7ef-463b-9a18-f9743a648fe6"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "output3", 
+                    "uuid": "d046c3f4-8016-43d4-9782-7834b39b8818"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "output1", 
+                    "uuid": "e12eb877-2cd5-4237-8d58-20f4d1c48be3"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "output4", 
+                    "uuid": "8d2442d8-9a16-4ddb-82ba-cb7bb706d3cc"
+                }, 
+                {
+                    "label": null, 
+                    "output_name": "output5", 
+                    "uuid": "ef119c6c-bb47-4828-b33b-0d3021e06031"
+                }
+            ]
+        }
+    }, 
+    "uuid": "4a900f66-7a8e-4a12-8326-7a63c67766a5"
+}
