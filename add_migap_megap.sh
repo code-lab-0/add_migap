@@ -1,8 +1,9 @@
 #!/bin/bash
 CONTAINER_ID=$1
 docker exec $CONTAINER_ID apt-get update
-docker exec $CONTAINER_ID apt-get -y install libsystemd-journal0 libapparmor1 sshpass openssh-client cpanminus
+docker exec $CONTAINER_ID apt-get -y install libsystemd-journal0 libapparmor1 sshpass openssh-client cpanminus libsasl2-dev python-dev libldap2-dev libssl-dev
 docker exec $CONTAINER_ID cpanm JSON
+docker exec $CONTAINER_ID /galaxy_venv/bin/pip install python-ldap
 docker exec $CONTAINER_ID sed -i -e "s/<\/toolbox>//" /export/galaxy-central/config/tool_conf.xml.sample
 docker exec -it $CONTAINER_ID perl -e '\
 open OUT, ">>/export/galaxy-central/config/tool_conf.xml.sample";\
