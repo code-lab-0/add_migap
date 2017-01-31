@@ -26,7 +26,6 @@ def remove_deleted_job():
             user = row[2]
             password = row[3]
 
-            # プロセスIDがprocと一部マッチするプロセスが出てきたらどうするか？
             cmd = "ps h " + proc
             out, err = exec_cmd(cmd)
             if out.decode('utf-8') == '':
@@ -64,10 +63,22 @@ def exec_cmd(cmd):
     out, err = p.communicate()
     return(out, err)
 
+# UGE RESTからジョブの実行ノードを取得
 def get_exec_host(job_id, user, password):
     host_r = re.compile("t\d\d\d")
-    cmd = "curl -X GET -H 'Content-Type: application/json' http://" + rest_host + ":" + rest_port + "/jobs/" + job_id + " -u " + user + ":" + password
-    out, err = exec_cmd(cmd)
+    cmd = [
+        "curl -X GET -H 'Content-Type: application/json' http://",
+        rest_host,
+        ":",
+        rest_port,
+        "/jobs/",
+        job_id,
+        " -u ",
+        user,
+        ":",
+        password
+    ]
+    out, err = exec_cmd(''.join(cmd))
     json_data = json.loads(out.decode('utf-8'))
     print(json.dumps(json_data))
     if 'queue' in json_data:
@@ -77,17 +88,42 @@ def get_exec_host(job_id, user, password):
     else:
          return("no exec host")
 
+# UGE RESTにジョブ削除のコマンドを投入
 def delete_uge_job(job_id, user, password):
-    cmd = "curl -X DELETE -H 'Content-Type: application/json' http://" + rest_host + ":" + rest_port + "/jobs -d {'jobid':'" + job_id + "'} -u " + user + ":" + password
-    out, err = exec_cmd(cmd)
+    cmd = [
+        "curl -X DELETE -H 'Content-Type: application/json' http://",
+        rest_host,
+        ":",
+        rest_port,
+        "/jobs -d {'jobid':'",
+        job_id,
+        "'} -u ",
+        user,
+        ":",
+        password
+    ]
+    out, err = exec_cmd(''.join(cmd))
     print('out:' + out.decode('utf-8'))
 
 # UGEジョブの標準出力からdockerコンテナIDの取得
 def get_container_id(job_id, user, password):
     container_r = re.compile("^/docker/(.*?)\n")
 
-    cmd = "sh -c \"sshpass -p '" + password + "' ssh -o StrictHostKeyChecking=no " + user + "@" + rest_host + " 'cat /home/" + user + "/*.o" + job_id + "'\""
-    out, err = exec_cmd(cmd)
+    cmd = [
+        "sh -c \"sshpass -p '",
+        password,
+        "' ssh -o StrictHostKeyChecking=no ",
+        user,
+        "@",
+        rest_host,
+        " 'cat /home/",
+        user,
+        "/*.o",
+        job_id,
+        "'\""
+    ]
+    print('cmd:' + ''.join(cmd))
+    out, err = exec_cmd(''.join(cmd))
     m = container_r.search(out.decode('utf-8'))
     container_id = m.group(1)
     print("container id:" + container_id)
@@ -95,8 +131,19 @@ def get_container_id(job_id, user, password):
 
 # 実行ノードとdockerコンテナIDからdockerコンテナを終了
 def delete_container(container_id, exec_host, user, password):
-    cmd = "sh -c \"sshpass -p '" + password + "' ssh -o StrictHostKeyChecking=no " + user + "@" + exec_host + " 'docker stop " + container_id + "'\""
-    out, err = exec_cmd(cmd)
+    cmd = [
+        "sh -c \"sshpass -p '",
+        password,
+        "' ssh -o StrictHostKeyChecking=no ",
+        user,
+        "@",
+        rest_host,
+        " 'docker stop ",
+        container_id,
+        "'\""
+    ]
+    print('cmd:' + ''.join(cmd))
+    out, err = exec_cmd(''.join(cmd))
     print(out.decode('utf-8'))
 
 def daemon_task():
