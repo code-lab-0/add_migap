@@ -1,11 +1,13 @@
 #!/bin/bash
 CONTAINER_ID=$1
 docker exec $CONTAINER_ID apt-get update
-docker exec $CONTAINER_ID apt-get -y install libsystemd-journal0 libapparmor1 sshpass openssh-client cpanminus libsasl2-dev python-dev libldap2-dev libssl-dev sqlite3
+docker exec $CONTAINER_ID apt-get -y install libsystemd-journal0 libapparmor1 sshpass openssh-client cpanminus libsasl2-dev python-dev libldap2-dev libssl-dev sqlite3 python3-pip
+docker exec $CONTAINER_ID pip3 install python-daemon
 docker exec $CONTAINER_ID cpanm JSON DBI DBD::SQLite
 docker exec $CONTAINER_ID /galaxy_venv/bin/pip install python-ldap
 docker cp user.sqlite3 $CONTAINER_ID:/user.sqlite3
 docker cp auth_conf.xml.sample $CONTAINER_ID:/export/galaxy-central/config/auth_conf.xml.sample
+docker cp remove_deleted_jobs.py $CONTAINER_ID:/remove_deleted_jobs.py
 docker exec $CONTAINER_ID sed -i -e "s/<\/toolbox>//" /export/galaxy-central/config/tool_conf.xml.sample
 docker exec -it $CONTAINER_ID perl -e '\
 open OUT, ">>/export/galaxy-central/config/tool_conf.xml.sample";\
