@@ -5,6 +5,7 @@ from subprocess import Popen, PIPE
 import json
 import re
 import daemon
+import daemon.pidfile
 import time
 
 dbfile = '/tmp/job_ids_record.sqlite3'
@@ -155,8 +156,10 @@ def daemon_task():
 if __name__ == "__main__":
     context = daemon.DaemonContext(
         working_directory = '/tmp/remove_deleted_jobs/',
-        stdout = open("stdout.log", "w+"),
-        stderr = open("stderr.log", "w+")
+        umask = 0o002,
+        pidfile = daemon.pidfile.PIDLockFile('/tmp/remove_deleted_jobs/remove_deleted_jobs.pid'),
+        stdout = open("/tmp/remove_deleted_jobs/stdout.log", "w+"),
+        stderr = open("/tmp/remove_deleted_jobs/stderr.log", "w+")
     )
     with context:
         daemon_task()
