@@ -69,7 +69,7 @@
             <search-filter>(uid={username})</search-filter>
 
             <search-user>cn=admin,dc=maas,dc=nig,dc=ac,dc=jp</search-user>
-            <search-password>password</search-password>
+            <search-password>testddbj</search-password>
 
             <!-- Replacement fields: instances of {email}, {username},
                  {password}, {dn} plus all fields defined in <search-fields> are
