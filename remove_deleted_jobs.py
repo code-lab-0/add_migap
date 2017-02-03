@@ -8,7 +8,7 @@ import daemon
 import daemon.pidfile
 import time
 
-dbfile = '/tmp/job_ids_record.sqlite3'
+dbfile = '/tmp/remove/deteted_jobs/job_ids_record.sqlite3'
 table = 'proc__job_ids__user__password'
 rest_host = '172.19.24.112'
 rest_port = '8182'
