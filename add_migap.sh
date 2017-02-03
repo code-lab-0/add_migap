@@ -7,6 +7,7 @@ docker exec $CONTAINER_ID cpanm JSON DBI DBD::SQLite
 docker exec $CONTAINER_ID /galaxy_venv/bin/pip install python-ldap
 docker cp user.sqlite3 $CONTAINER_ID:/user.sqlite3
 docker cp auth_conf.xml.sample $CONTAINER_ID:/export/galaxy-central/config/auth_conf.xml.sample
+docker exec $CONTAINER_ID mkdir /tmp/remove_deleted_jobs
 docker cp remove_deleted_jobs.py $CONTAINER_ID:/tmp/remove_deleted_jobs/remove_deleted_jobs.py
 docker exec $CONTAINER_ID sed -i -e "s/<\/toolbox>//" /export/galaxy-central/config/tool_conf.xml.sample
 docker exec -it $CONTAINER_ID perl -e '\
